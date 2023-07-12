@@ -1,4 +1,5 @@
 import React from 'react'
+import Star from "../../Images/star.png"
 
 function foodcard(props) {
   return (
@@ -16,10 +17,15 @@ function foodcard(props) {
 </div>
 
   </div>
-  <div class=" py-4">
-   <p>{props.rating}</p>
-   <p className='whitespace-nowrap'>{props.quantity}</p>
-   <p>{props.time}</p>
+  <div class=" py-4 text-right gap-10">
+<div className="flex items-center ml-9 rounded-lg p-1  bg-green-800 ">
+  <p className='text-white font-semibold text-center ml-1'>
+    {props.rating}
+  </p>
+  <img className="" src={Star} alt='star'/>
+</div>
+   <p className='whitespace-nowrap text-slate-500 leading-5 text-base max-w-xl truncate overflow-ellipsis'>{props.quantity}</p>
+   <p className='text-slate-600 font-medium'>{props.time}</p>
   </div>
   </div>
 </div>
