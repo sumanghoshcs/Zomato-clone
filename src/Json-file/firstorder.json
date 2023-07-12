@@ -1,0 +1,44 @@
+{
+    "foods": [
+      {
+        "name": "Biryani",
+        "imageSrc": "https://b.zmtcdn.com/data/dish_images/d19a31d42d5913ff129cafd7cec772f81639737697.png"
+      },
+      {
+        "name": "Pizza",
+        "imageSrc": "https://b.zmtcdn.com/data/o2_assets/d0bd7c9405ac87f6aa65e31fe55800941632716575.png"
+      },
+      {
+        "name": "Chicken",
+        "imageSrc": "https://b.zmtcdn.com/data/dish_images/197987b7ebcd1ee08f8c25ea4e77e20f1634731334.png"
+      },
+      {
+        "name": "Burger",
+        "imageSrc": "https://b.zmtcdn.com/data/dish_images/ccb7dc2ba2b054419f805da7f05704471634886169.png"
+      },
+      {
+        "name": "Fried Rice",
+        "imageSrc": "https://b.zmtcdn.com/data/o2_assets/e444ade83eb22360b6ca79e6e777955f1632716661.png"
+      },
+      {
+        "name": "Rolls",
+        "imageSrc": "https://b.zmtcdn.com/data/dish_images/c2f22c42f7ba90d81440a88449f4e5891634806087.png"
+      },
+      {
+        "name": "Thali",
+        "imageSrc": "https://b.zmtcdn.com/data/o2_assets/52eb9796bb9bcf0eba64c643349e97211634401116.png"
+      },
+      {
+        "name": "Cake",
+        "imageSrc": "https://b.zmtcdn.com/data/dish_images/d5ab931c8c239271de45e1c159af94311634805744.png"
+      },
+      {
+        "name": "Panner",
+        "imageSrc": "https://b.zmtcdn.com/data/dish_images/e44c42ff4b60b025225c8691ef9735b11635781903.png"
+      },
+      {
+        "name": "North Indian",
+        "imageSrc": "https://b.zmtcdn.com/data/o2_assets/019409fe8f838312214d9211be010ef31678798444.jpeg"
+      }
+    ]
+  }
