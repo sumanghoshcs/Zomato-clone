@@ -25,7 +25,7 @@ function foodcard(props) {
   <img className="" src={Star} alt='star'/>
 </div>
    <p className='whitespace-nowrap text-slate-500 leading-5 text-base max-w-xl truncate overflow-ellipsis'>{props.quantity}</p>
-   <p className='text-slate-600 font-medium'>{props.time}</p>
+   <p className='text-slate-600 font-medium'>{props.time}{props.distance}</p>
   </div>
   </div>
 </div>
