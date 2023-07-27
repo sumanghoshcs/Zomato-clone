@@ -6,6 +6,7 @@ import Delivery from './Delivery/delivery';
 import Diningout from './Dining out/diningout';
 import Nightlife from './Diningout/nightlife'
 import Subfooter from './component/Footer/subfooter';
+import Footer from './component/Footer/footer';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/nightlife" element={<Nightlife />} />
         </Routes>
         <Subfooter/>
+        <Footer/>
       </Router>
     </div>
   );
