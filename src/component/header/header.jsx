@@ -7,7 +7,7 @@ function Header() {
   return (
     <div className='flex flex-row items-center gap-12 mt-2.5'>
       <div className=''>
-  <img src='https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png' alt='logo-image' className='h-7 w-40' />
+  <img src='https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png' alt='logo' className='h-7 w-40' />
 </div>
       <div className='gap-4 flex '>
         <div className='flex items-center border rounded-md py-3 pr-36 bg-white drop-shadow-xl'>

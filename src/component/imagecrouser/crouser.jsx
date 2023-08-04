@@ -4,13 +4,12 @@ function ImageCrouser({ children }) {
   const boxRef = useRef(null);
 
   const pressPrev = () => {
-    const width = boxRef.current.offsetWidth;
     const newWidth = 180;
     boxRef.current.scrollLeft -= newWidth;
   };
 
   const pressNext = () => {
-    const width = boxRef.current.offsetWidth;
+
     const newWidth = 180;
     boxRef.current.scrollLeft += newWidth;
   };
