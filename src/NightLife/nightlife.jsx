@@ -11,7 +11,7 @@ const DiningOut = () => {
     <p className="text-4xl font-large ml-6 pt-4">Nightlife Restaurants in Sector 5, Salt Lake</p>
     <div className="flex flex-wrap justify-between mt-10"> 
       {data.map((item, index) => (
-        <div key={index} className="w-1/3 p-4"> 
+        <div key={index} className="w-1/3 max-sm:w-full max-sm:ml-4 max-lg:w-1/2 p-4"> 
           <FootCard
             name={item.info.name}
             src={item.info.image.url}

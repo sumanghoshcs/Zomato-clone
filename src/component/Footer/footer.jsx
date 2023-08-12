@@ -34,8 +34,8 @@ function Footer() {
   
   return (
     <>
-      <div className=' bg-slate-black space-y-px gap-x-36 bg-slate-50'>
-        <div className='mt-10 p-5 flex justify-between'>
+      <div className=' bg-slate-black space-y-px gap-x-36 gap-10 bg-slate-50 flex flex-col max-md:m-0 max-md:p-0 max-md:w-full p-10'>
+        <div className='mt-10 p-5 flex justify-between max-md:flex-col max-md:gap-10'>
           <div>
           <img src='https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png' alt='logo' className='h-7 w-40' />
           </div>
@@ -67,8 +67,7 @@ function Footer() {
           </div>
         </div>
         {/* ... Rest of the JSX ... */}
-        <div className='flex flex-row justify-between gap-y-96 '>
-            
+        <div className='flex flex-row justify-between gap-y-96 max-md:grid max-md:grid-cols-2 max-md:gap-16 max-md:gap-y-5'>
             <div className='gap-x-96 text-slate-500'>
                 <p className='text-xl text-black font-semibold'>ABOUT ZOMATO</p>
                 <p>Who We are</p>
@@ -89,7 +88,7 @@ function Footer() {
                 <p></p>
                 <p></p>
             </div>
-           
+            
             <div className='text-slate-500'>
                  <p className='text-xl text-black font-semibold'>FOR RESTAURANTS</p>
                 <p>Partner With Us</p>
@@ -108,8 +107,8 @@ function Footer() {
                 <p></p>
                 <p></p>
             </div>
-           
-            <div className='flex flex-col'>
+          
+            <div className='flex flex-col '>
                  <p className='text-xl text-black font-semibold'>SOCIAL LINKS</p>
                  <div className='flex flex-row gap-2'>
                  <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '22px' }}/>
@@ -122,7 +121,7 @@ function Footer() {
             </div>
         </div>
         </div>
-        <div className='mt-10'></div>
+        
     </>
   )
 }
