@@ -1,0 +1,44 @@
+{
+    "brands": [
+      {
+        "name": "WOW! Momo",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/3a58b67479fd290ff96996002438736e_1672389253.png"
+      },
+      {
+        "name": "Domino's Pizza",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/1a985408ca7ad8fd097f2c47db9c5cb6_1611252746.png"
+      },
+      {
+        "name": "Gupta Brothers",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/a2531dc570196c0cd9322814eb010d94_1605102324.png"
+      },
+      {
+        "name": "Chowman",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/6799a847a4bfaee73f5e14aaba8cef83_1638193272.png"
+      },
+      {
+        "name": "Arsalan",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/fe5db95ae85292933996d4043f600d3b_1611320738.png"
+      },
+      {
+        "name": "KFC",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/560b209a689eefa9feb367b5d5604097_1611382952.png"
+      },
+      {
+        "name": "Oudh 1590",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/acbdc3d44519ca1392d279c59d7fdc8d_1611320510.png"
+      },
+      {
+        "name": "Pizza Hut",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/c38f7540bcc5a38e918856ac06409056_1504531339.png"
+      },
+      {
+        "name": "Kwality Wall's Frozen Dessert And Ice Cream Shop",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/0619ae0b489d44dd3562538f7768e48a_1658824977.png"
+      },
+      {
+        "name": "Kasturi Restaurant",
+        "imageSrc": "https://b.zmtcdn.com/data/brand_creatives/logos/94e8d80f54135ba39669774c68e9ecff_1567764102.png"
+      }
+    ]
+  }
