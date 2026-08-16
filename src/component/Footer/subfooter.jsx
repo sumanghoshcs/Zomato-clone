@@ -15,66 +15,45 @@ const FAQComponent = () => {
   ];
 
   const answers = [
-    'Bakery food near meBengali food near meBeverages food near meBiryani food near meBurger food near meChinese food near meContinental food near meDesserts food near meKebab food near meMomos food near meMughlai food near meNorth Indian food near mePizza food near meRolls food near meSandwich food near meSeafood food near meShake food near meSichuan food near meSouth Indian food near meStreet food near m',
-    'Bakeries near meBars near meBeverage Shops near meBhojanalya near meCafés near meCasual Dining near meClubs near meCocktail Bars near meConfectioneries near meDessert Parlors near meDhabas near meFine Dining near meFood Courts near meFood Trucks near meKiosks near meLounges near meMicrobreweries near mePaan Shop near mePubs near meQuick Bites near meSweet Shops near me',
-    'Burger KingBurger SinghDomino sHaldiram sKFC',
-    'Delhi NCRKolkata MumbaiBengaluru PuneHyderabad Chennai Lucknow Kochi Jaipur Ahmedabad Chandigarh Goa Indore Gangtok NashikOoty Shimla Ludhiana Guwahati Amritsar Kanpur Allahabad Aurangabad Bhopal Ranchi Visakhapatnam Bhubaneswar Coimbatore Mangalore Vadodara Nagpur Agra Dehradun Mysore Puducherry Surat Varanasi Patna Udaipur Srinagar Khajuraho Neemrana Cuttack Trivandrum Haridwar LehPushkar Rajkot Madurai Kozhikode Alappuzha Thrissur Manipal Vijayawada Jodhpur KotaAjmer Mussoorie Rishikesh Jalandhar Jammu Manali Dharamshala',
+    'Bakery, Bengali, Beverages, Biryani, Burger, Chinese, Continental, Desserts, Kebab, Momos, Mughlai, North Indian, Pizza, Rolls, Sandwich, Seafood, Shake, Sichuan, South Indian, Street food...',
+    'Bakeries, Bars, Beverage Shops, Bhojanalya, Cafés, Casual Dining, Clubs, Cocktail Bars, Confectioneries, Dessert Parlors, Dhabas, Fine Dining, Food Courts, Food Trucks, Kiosks, Lounges, Microbreweries, Pubs, Quick Bites, Sweet Shops...',
+    'Burger King, Domino\'s, Haldiram\'s, KFC, Pizza Hut, Arsalan, WOW! Momo, Chowman...',
+    'Delhi NCR, Kolkata, Mumbai, Bengaluru, Pune, Hyderabad, Chennai, Lucknow, Kochi, Jaipur, Ahmedabad, Chandigarh, Goa, Indore, Gangtok, Nashik, Ooty, Shimla, Ludhiana, Guwahati, Amritsar, Kanpur, Bhopal, Ranchi, Visakhapatnam, Bhubaneswar, Coimbatore, Mangalore, Vadodara, Nagpur, Agra, Dehradun, Mysore, Puducherry, Surat, Varanasi, Patna, Udaipur, Srinagar, Rajkot, Madurai, Vijayawada, Jodhpur, Kota, Mussoorie, Rishikesh, Jalandhar, Jammu, Manali, Dharamshala...',
   ];
 
   return (
-    <div className='justify-between flex flex-col gap-8'>
-      <p className='text-3xl font-medium pt-6 mt-5'>Explore options near me</p>
-      {questions.map((question, index) => (
-        <div
-          key={index}
-          className={`border-2 border-gray-100 p-5 text-xl font-sm ${
-            activeIndex === index ? 'h-auto' : 'h-14'
-          }`}
-        >
-          <div className='flex items-center justify-between'>
-            <p className=''>{question}</p>
+    <div className="mx-4 md:mx-10 lg:mx-20 2xl:mx-44 flex flex-col gap-4 md:gap-6 mt-8">
+      <p className="text-2xl md:text-3xl font-medium text-gray-900 pt-4">Explore options near me</p>
+      {questions.map((question, index) => {
+        const open = activeIndex === index;
+        return (
+          <div
+            key={index}
+            className="border-2 border-gray-100 rounded-lg overflow-hidden"
+          >
             <button
-              className='ml-2 focus:outline-none'
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-base md:text-xl text-gray-800"
               onClick={() => toggleAccordion(index)}
             >
-              {activeIndex === index ? (
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  stroke='currentColor'
-                  className='h-6 w-6'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M19 9l-7 7-7-7'
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  stroke='currentColor'
-                  className='h-6 w-6'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M9 5l7 7-7 7'
-                  />
-                </svg>
-              )}
+              <span>{question}</span>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+                className={`h-6 w-6 shrink-0 text-gray-500 transition-transform ${open ? 'rotate-180' : ''}`}
+              >
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+              </svg>
             </button>
+            {open && (
+              <p className="px-5 pb-5 text-sm md:text-base text-slate-500 leading-relaxed">
+                {answers[index]}
+              </p>
+            )}
           </div>
-          {activeIndex === index && (
-            <p className='border-gray-100 mt-2 '>{answers[index]}</p>
-          )}
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

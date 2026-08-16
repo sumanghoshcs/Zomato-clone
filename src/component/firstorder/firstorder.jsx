@@ -4,19 +4,19 @@ import Roundcard from "../card/roundcard";
 import ImageCrouser from "../imagecrouser/crouser";
 
 const FirstOrder = () => {
-  const data = JsonData.foods; // Access the "foods" array from the JSON data
+  const data = JsonData.foods;
   return (
-    <div className="mt-10 max-md:mt-2 bg-slate-50 w-full h-80">
-      <p className="text-3xl font-medium ml-8 pt-6 mt-20">
+    <div className="mt-8 md:mt-12">
+      <p className="text-2xl md:text-3xl font-medium ml-2 md:ml-8">
         Inspiration for your first order
       </p>
-      <ImageCrouser>
-        {data.map((item, index) => (
-          <div key={index} className="">
-            <Roundcard name={item.name} src={item.imageSrc} />
-          </div>
-        ))}
-      </ImageCrouser>
+      <div className="mt-4 md:mt-6">
+        <ImageCrouser>
+          {data.map((item, index) => (
+            <Roundcard key={index} name={item.name} src={item.imageSrc} />
+          ))}
+        </ImageCrouser>
+      </div>
     </div>
   );
 };

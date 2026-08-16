@@ -4,8 +4,12 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        zomato: "#e23744",
+        "zomato-dark": "#c12836",
+      },
+    },
   },
   plugins: [],
 }
-

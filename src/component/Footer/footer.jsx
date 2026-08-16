@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Down from '../../Images/down.png';
 import Select from 'react-select';
 import Country from "../../Json-file/country.json"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,53 +6,65 @@ import { faLinkedin, faYoutube, faFacebook, faTwitter, faInstagram } from '@fort
 
 function Footer() {
   const data = Country.all_country_code
-  const [showMap, setShowMap] = useState(true);
-  const [selectedCountry, setSelectedCountry] = useState('');
-    
-  const handleCountryClick = () => {
-    setShowMap((prevState) => !prevState); // Toggle map visibility
-  };
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
   const handleCountrySelection = (country) => {
     setSelectedCountry(country);
-    setShowMap(false); // Hide the map after a selection is made
   };
+
   const countryOptions = data.map((item) => ({
     value: item.name,
     label: item.name,
-    image : item.flagImgUrl,
-
+    image: item.flagImgUrl,
   }));
 
   const formatOptionLabel = ({ label, image }) => (
-    <div className="flex">
-      <img src={image} alt="country-image" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
+    <div className="flex items-center">
+      <img src={image} alt={label} style={{ width: '22px', height: '22px', marginRight: '10px', borderRadius: '2px', objectFit: 'cover' }} />
       <span>{label}</span>
     </div>
   );
-  
+
+  const columns = [
+    {
+      title: "ABOUT ZOMATO",
+      links: ["Who We are", "Blog", "Work With Us", "Investor Relation", "Report Fraud", "Contact Us"],
+    },
+    {
+      title: "ZOMAVERSE",
+      links: ["Zomato", "Blinkit", "Feeding India", "Hyperpure", "Zomaland"],
+    },
+    {
+      title: "FOR RESTAURANTS",
+      links: ["Partner With Us", "Apps For You"],
+      secondTitle: "FOR ENTERPRISES",
+      secondLinks: ["Zomato for Enterprises"],
+    },
+    {
+      title: "LEARN MORE",
+      links: ["Privacy", "Security", "Terms", "Sitemap"],
+    },
+  ];
+
   return (
-    <>
-      <div className=' bg-slate-black space-y-px gap-x-36 gap-10 bg-slate-50 flex flex-col max-md:m-0 max-md:p-0 max-md:w-full p-10'>
-        <div className='mt-10 p-5 flex justify-between max-md:flex-col max-md:gap-10'>
-          <div>
-          <img src='https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png' alt='logo' className='h-7 w-40' />
+    <div className="bg-slate-50 mt-12 px-4 md:px-10 lg:px-20 2xl:px-44 py-10">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <img src='https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png' alt='logo' className='h-7 w-40' />
+        <div className='flex flex-wrap gap-4'>
+          <div className="min-w-44">
+            <Select
+              value={selectedCountry}
+              onChange={handleCountrySelection}
+              options={countryOptions}
+              placeholder="India ▼"
+              formatOptionLabel={formatOptionLabel}
+              isSearchable
+            />
           </div>
-          <div className='flex gap-10'>
-          <div className='flex'>
-          <Select
-      value={selectedCountry ? { value: selectedCountry, label: selectedCountry, src:selectedCountry } : null}
-      onChange={handleCountrySelection}
-      options={countryOptions}
-      placeholder="Select a country"
-      formatOptionLabel={formatOptionLabel}
-    />
-          </div>
-          <div className='text-slate-500 '>
-           <select className='p-2 border-2 border-text-slate-500 rounded'>
+          <select className='p-2 border-2 border-gray-200 rounded min-w-32 text-sm' defaultValue="English">
             <option>English</option>
             <option>Turkce</option>
-            <option>hindi</option>
+            <option>Hindi</option>
             <option>Portugues</option>
             <option>Indonesian</option>
             <option>Espanol</option>
@@ -62,68 +73,56 @@ function Footer() {
             <option>Polish</option>
             <option>Italian</option>
             <option>Vietnamese</option>
-           </select>
+          </select>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-10">
+        {columns.map((col) => (
+          <div key={col.title} className="text-slate-500 text-sm">
+            <p className="text-base text-black font-semibold mb-3">{col.title}</p>
+            {col.links.map((link) => (
+              <p key={link} className="py-1 hover:text-black cursor-pointer transition-colors">{link}</p>
+            ))}
+            {col.secondTitle && (
+              <>
+                <p className="text-base text-black font-semibold mb-3 mt-6">{col.secondTitle}</p>
+                {col.secondLinks.map((link) => (
+                  <p key={link} className="py-1 hover:text-black cursor-pointer transition-colors">{link}</p>
+                ))}
+              </>
+            )}
           </div>
+        ))}
+
+        <div>
+          <p className="text-base text-black font-semibold mb-3">SOCIAL LINKS</p>
+          <div className='flex gap-3'>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 hover:bg-black hover:text-white transition-colors cursor-pointer">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 hover:bg-black hover:text-white transition-colors cursor-pointer">
+              <FontAwesomeIcon icon={faInstagram} />
+            </span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 hover:bg-black hover:text-white transition-colors cursor-pointer">
+              <FontAwesomeIcon icon={faTwitter} />
+            </span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 hover:bg-black hover:text-white transition-colors cursor-pointer">
+              <FontAwesomeIcon icon={faYoutube} />
+            </span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 hover:bg-black hover:text-white transition-colors cursor-pointer">
+              <FontAwesomeIcon icon={faFacebook} />
+            </span>
           </div>
         </div>
-        {/* ... Rest of the JSX ... */}
-        <div className='flex flex-row justify-between gap-y-96 max-md:grid max-md:grid-cols-2 max-md:gap-16 max-md:gap-y-5'>
-            <div className='gap-x-96 text-slate-500'>
-                <p className='text-xl text-black font-semibold'>ABOUT ZOMATO</p>
-                <p>Who We are</p>
-                <p>Blog</p>
-                <p>Work With Us</p>
-                <p>Investor Relation</p>
-                <p>Report Fraud</p>
-                <p>Contact Us</p>
-            </div>
-            
-            <div className='text-slate-500'>
-                <p className='text-xl text-black font-semibold'>ZOMAVERSE</p>
-                <p>Zomato</p>
-                <p>Blinkit</p>
-                <p>Feeding India</p>
-                <p>Hyperpure</p>
-                <p>Zomaland</p>
-                <p></p>
-                <p></p>
-            </div>
-            
-            <div className='text-slate-500'>
-                 <p className='text-xl text-black font-semibold'>FOR RESTAURANTS</p>
-                <p>Partner With Us</p>
-                <p>Apps For You</p>
-                <p className='text-xl text-black font-semibold'>FOR ENTERPRISES</p>
-                <p>Zomato for Enterprises</p>
-            </div>
-            
-            <div className='text-slate-500'>
-                <p className='text-xl text-black font-semibold'>LEARN MORE</p>
-                <p>Privacy</p>
-                <p>Security</p>
-                <p>Terms</p>
-                <p>Sitemap</p>
-                <p></p>
-                <p></p>
-                <p></p>
-            </div>
-          
-            <div className='flex flex-col '>
-                 <p className='text-xl text-black font-semibold'>SOCIAL LINKS</p>
-                 <div className='flex flex-row gap-2'>
-                 <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '22px' }}/>
-      <FontAwesomeIcon icon={faYoutube} style={{ fontSize: '22px' }}/>
-      <FontAwesomeIcon icon={faFacebook} style={{ fontSize: '22px' }}/>
-      <FontAwesomeIcon icon={faTwitter} style={{ fontSize: '22px' }}/>
-      <FontAwesomeIcon icon={faInstagram} style={{ fontSize: '22px' }}/>
-                 </div>
-      
-            </div>
-        </div>
-        </div>
-        
-    </>
+      </div>
+
+      <div className="mt-10 border-t border-gray-200 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
+        <p>By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies.</p>
+        <p>© 2026 Zomato Clone | For educational purposes only</p>
+      </div>
+    </div>
   )
 }
 
-export default Footer;
+export default Footer

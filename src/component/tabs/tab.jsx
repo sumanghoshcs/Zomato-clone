@@ -1,31 +1,52 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-function tab() {
+import { Link, useLocation } from 'react-router-dom';
+
+function Tab() {
+  const { pathname } = useLocation();
+
+  const tabs = [
+    {
+      to: "/",
+      label: "Delivery",
+      img: "https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png",
+      activeImg: "https://b.zmtcdn.com/data/o2_assets/c0bb85d3a6347b2ec070a8db694588261616149578.png",
+    },
+    {
+      to: "/diningout",
+      label: "DiningOut",
+      img: "https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png",
+      activeImg: "https://b.zmtcdn.com/data/o2_assets/855687dc64a5e06d737dae45b7f6a13b1616149818.png",
+    },
+    {
+      to: "/nightlife",
+      label: "Nightlife",
+      img: "https://b.zmtcdn.com/data/o2_assets/01040767e4943c398e38e3592bb1ba8a1616150142.png",
+      activeImg: "https://b.zmtcdn.com/data/o2_assets/855687dc64a5e06d737dae45b7f6a13b1616149818.png",
+    },
+  ];
+
   return (
     <>
-    <div className='flex mt-10 text-xl font-medium gap-16  overflow-hidden text-slate-500 tracking-wide max-md:flex max-md:overflow-x-auto'>
-  <div className='flex items-center'>
-    <div className='border-solid border-2 rounded-full p-4 bg-slate-50 max-md:hidden'>
-    <img src='https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png' alt='delivery' className='w-7 h-7 ' />
-    </div>
-    <Link to="/"><p className='ml-2 text-2xl'>Delivery</p></Link>
-  </div>
-  <div className='flex items-center ml-4'>
-    <div className='border-solid border-2 rounded-full p-4 bg-slate-50 max-md:hidden'>
-    <img src='https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png' alt='diningout' className='w-7 h-7' />
-    </div>
-    <Link to="diningout"><p className='ml-2 text-2xl'>DiningOut</p></Link>
-  </div>
-  <div className='flex items-center ml-4'>
-    <div className='border-solid border-2 rounded-full p-4 bg-slate-50 max-md:hidden'>
-    <img src='https://b.zmtcdn.com/data/o2_assets/01040767e4943c398e38e3592bb1ba8a1616150142.png' alt='nightlife' className='w-7 h-7' />
-    </div>
-    <Link to="nightlife"><p className='ml-2 text-2xl'>Nightlife</p></Link>
-  </div>
-</div>
-<div className="w-full border-b-2 border-gray-100 mt-4"></div>
-</>
-  )
+      <div className="flex mt-6 md:mt-10 text-xl font-medium gap-8 md:gap-16 overflow-x-auto text-slate-500 tracking-wide no-scrollbar">
+        {tabs.map((tab) => {
+          const active = pathname === tab.to;
+          return (
+            <div key={tab.to} className="flex items-center shrink-0">
+              <div className={`border-solid border-2 rounded-full p-3 md:p-4 bg-slate-50 ${active ? "hidden" : ""}`}>
+                <img src={active ? tab.activeImg : tab.img} alt={tab.label} className="w-6 h-6 md:w-7 md:h-7" />
+              </div>
+              <Link to={tab.to}>
+                <p className={`ml-2 text-lg md:text-2xl whitespace-nowrap ${active ? "text-zomato" : "hover:text-gray-800"}`}>
+                  {tab.label}
+                </p>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+      <div className="w-full border-b-2 border-gray-100 mt-4"></div>
+    </>
+  );
 }
 
-export default tab
+export default Tab;

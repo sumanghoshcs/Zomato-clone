@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Zomato Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fully responsive Zomato-style food delivery app: restaurant discovery, menus, cart, coupon codes, checkout with payment options, live order tracking, order history, auth, search and favourites. React 18 + Redux Toolkit + Tailwind CSS.
 
 ## Available Scripts
 
@@ -8,63 +8,45 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000).
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in watch mode. Tests cover restaurant data normalization, menu generation, search/sort, coupon math and the TheMealDB dish mapper.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder. Pages and the map component are code-split into lazy-loaded chunks.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Optional API Integrations
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All integrations are optional and degrade gracefully. Without any keys, the app runs fully on local mock data.
 
-### `npm run eject`
+| Feature | Provider | Config (`.env`) | Fallback |
+| --- | --- | --- | --- |
+| Real dish names + food images | TheMealDB (free, no key) | none — auto-enabled | Static dish catalog |
+| Restaurant / delivery map | Leaflet + OpenStreetMap (free, no key) | none — auto-enabled | Hidden map placeholder |
+| Real payment popup (test mode) | Razorpay | `REACT_APP_RAZORPAY_KEY_ID` (`rzp_test_...`) | Simulated payment flow |
+| Real email/password auth | Firebase Auth (free tier) | `REACT_APP_FIREBASE_API_KEY`, `REACT_APP_FIREBASE_AUTH_DOMAIN`, `REACT_APP_FIREBASE_PROJECT_ID`, `REACT_APP_FIREBASE_STORAGE_BUCKET`, `REACT_APP_FIREBASE_MESSAGING_SENDER_ID`, `REACT_APP_FIREBASE_APP_ID` | Local mock auth |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Copy the empty `.env` file and fill in the values you have.
+2. **Razorpay:** dashboard.razorpay.com → Settings → API Keys → use a test key. Test UPI/cards are listed in the Razorpay docs.
+3. **Firebase:** console.firebase.google.com → create project → Authentication → enable Email/Password → Project settings → Your apps → Web → copy the config.
+4. Restart `npm start` after editing `.env`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Security: the Razorpay key in `.env` is a **test** key and is compiled into the client bundle. Production payments require a server-side order-creation endpoint (do not ship a live key client-side).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Key Commands
 
-## Learn More
+- Lint/type check happens automatically during `npm run build` (CRA).
+- Tests: `npm test`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `src/data/` — restaurant normalization (`restaurants.js`), dish catalog + menu builder (`dishCatalog.js`), TheMealDB pool (`mealDB.js`), coupons (`coupons.js`).
+- `src/redux/` — cart (`cartSlice.js`), user/auth (`userSlice.js`), orders (`ordersSlice.js`), store config.
+- `src/components/` — shared UI (MenuCard, RestaurantCard, AuthModal, CartDrawer, RestaurantMap, Toast, …).
+- `src/pages/` — restaurant detail, cart, checkout, order success, orders, search, favourites.
+- `src/Json-file/` — mock restaurant JSON data.
